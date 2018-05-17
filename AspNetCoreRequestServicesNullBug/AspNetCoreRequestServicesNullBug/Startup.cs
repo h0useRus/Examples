@@ -18,8 +18,8 @@ namespace AspNetCoreRequestServicesNullBug
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseMiddleware<CustomHeaderMiddleware>();
-            //app.UseMiddleware<NotWorkingHeaderMiddleware>(); <-- uncomment to see a problem
+            //app.UseMiddleware<CustomHeaderMiddleware>();
+            app.UseMiddleware<NotWorkingHeaderMiddleware>(); //<-- uncomment to see a problem
             app.UseMvc();
         }
     }

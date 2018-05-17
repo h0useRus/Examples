@@ -50,7 +50,7 @@ namespace AspNetCoreRequestServicesNullBug
                 return Task.CompletedTask;
             });
 
-            await _next.Invoke(context).ConfigureAwait(false);
+            await _next.Invoke(context);
         }
     }
 }
