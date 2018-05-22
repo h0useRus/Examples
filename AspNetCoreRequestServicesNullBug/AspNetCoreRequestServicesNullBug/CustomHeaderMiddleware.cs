@@ -40,12 +40,10 @@ namespace AspNetCoreRequestServicesNullBug
         {
             _next = next;
         }
-        public async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, ISomeService service)
         {
             context.Response.OnStarting(() =>
             {
-                // context.RequestServices always null, I'm not adding null-check to see actual exception.
-                var service = context.RequestServices.GetService<ISomeService>();
                 service.SetHeader(context.Response);
                 return Task.CompletedTask;
             });
